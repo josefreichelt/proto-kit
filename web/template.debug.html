@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Proto-Kit (Debug)</title>
+        <link rel="stylesheet" href="./style.css">
+        <style>
+            #output {
+                position: absolute;
+                bottom: 0;
+                left: 0.5%;
+                width: calc(99% - 2rem);
+                height: 200px;
+                border-left: 0px;
+                border-right: 0px;
+                margin: 0;
+                padding: 0 1rem;
+                display: block;
+                background-color: rgba(0, 0, 0, 0.1);
+                color: white;
+                font-family: 'Lucida Console', Monaco, monospace;
+                outline: none;
+                zoom: 0.5;
+                resize: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="download-progress">
+            <div class="progress-wrapper">
+                <div class="spinner" id='spinner'></div>
+                <div class="emscripten" id="status">Downloading...</div>
+                <div class="emscripten">
+                    <progress value="0" max="100" id="progress" hidden=1></progress>
+                </div>
+            </div>
+        </div>
+        <div id='controls'>
+            <input title="Enter fullscreen" type="button" id="fullscreen-button" value="⛶"
+                onclick="Module.requestFullscreen()">
+        </div>
+        <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+        <textarea id="output" rows="8"></textarea>
+
+        <script type='text/javascript' src="./module.js"></script>
+        {{{ SCRIPT }}}
+    </body>
+</html>

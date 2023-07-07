@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Proto-Kit</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div id="download-progress">
+            <div class="progress-wrapper">
+                <div class="spinner" id='spinner'></div>
+                <div class="emscripten" id="status">Downloading...</div>
+                <div class="emscripten">
+                    <progress value="0" max="100" id="progress" hidden=1></progress>
+                </div>
+            </div>
+        </div>
+        <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+        <script type='text/javascript' src="./module.js"></script>
+        {{{ SCRIPT }}}
+    </body>
+</html>

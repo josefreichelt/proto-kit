@@ -1,0 +1,191 @@
+{
+    "version": 5,
+    "configurePresets": [
+        {
+            "name": "web_base",
+            "description": "Emscripten configuration",
+            "binaryDir": "${sourceDir}/build_web",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "$env{EMSDK}/upstream/emscripten/emcc",
+                "CMAKE_CXX_COMPILER": "$env{EMSDK}/upstream/emscripten/em++",
+                "CMAKE_TOOLCHAIN_FILE": "$env{EMSDK}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake",
+                "PLATFORM": "Web"
+            },
+            "hidden": true
+        },
+        {
+            "name": "web_debug",
+            "displayName": "Web (Debug)",
+            "inherits": "web_base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "condition": {
+                "type": "notEquals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "web_debug_win",
+            "displayName": "Web (Debug) Windows",
+            "inherits": "web_base",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "$env{EMSDK}/upstream/emscripten/emcc.bat",
+                "CMAKE_CXX_COMPILER": "$env{EMSDK}/upstream/emscripten/em++.bat",
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "generator": "MinGW Makefiles",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "web_release",
+            "displayName": "Web (Release)",
+            "inherits": "web_base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "condition": {
+                "type": "notEquals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "web_release_win",
+            "displayName": "Web (Release) Windows",
+            "inherits": "web_debug_win",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "clang_base",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "PLATFORM": "Desktop"
+            },
+            "condition": {
+                "type": "notEquals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
+            "hidden": true
+        },
+        {
+            "name": "clang",
+            "displayName": "Desktop (Debug) Clang",
+            "inherits": "clang_base"
+        },
+        {
+            "name": "clang_release",
+            "displayName": "Desktop (Release) Clang",
+            "inherits": "clang_base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "gcc_base",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "PLATFORM": "Desktop"
+            },
+            "hidden": true
+        },
+        {
+            "name": "gcc_debug",
+            "displayName": "Desktop (Debug) GCC",
+            "inherits": "gcc_base",
+            "condition": {
+                "type": "notEquals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "gcc_release",
+            "displayName": "Desktop (Release) GCC",
+            "inherits": "gcc_base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "condition": {
+                "type": "notEquals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "gcc_debug_win",
+            "displayName": "Desktop (Debug) GCC Windows",
+            "inherits": "gcc_base",
+            "generator": "MinGW Makefiles",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "gcc_release_win",
+            "displayName": "Desktop (Release) GCC Windows",
+            "inherits": "gcc_debug_win",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "build_gcc_debug",
+            "configurePreset": "gcc_debug"
+        },
+        {
+            "name": "build_gcc_release",
+            "configurePreset": "gcc_release"
+        },
+        {
+            "name": "build_gcc_debug_win",
+            "configurePreset": "gcc_debug_win"
+        },
+        {
+            "name": "build_gcc_release_win",
+            "configurePreset": "gcc_release_win"
+        },
+        {
+            "name": "build_clang_debug",
+            "configurePreset": "clang"
+        },
+        {
+            "name": "build_clang_release",
+            "configurePreset": "clang_release"
+        },
+        {
+            "name": "build_web_debug",
+            "configurePreset": "web_debug"
+        },
+        {
+            "name": "build_web_release",
+            "configurePreset": "web_release"
+        },
+        {
+            "name": "build_web_debug_win",
+            "configurePreset": "web_debug_win"
+        },
+        {
+            "name": "build_web_release_win",
+            "configurePreset": "web_release_win"
+        }
+    ]
+}

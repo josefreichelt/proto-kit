@@ -1,0 +1,9 @@
+build/
+build_web/
+bin/
+bin_web/
+dist/
+.vs/
+.VSCodeCounter/
+.DS_Store
+thirdparty/

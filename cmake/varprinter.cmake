@@ -1,0 +1,10 @@
+# loops over all arguments and prints the result in a nice way
+function(varprinter)
+    foreach(var ${ARGN})
+        if(DEFINED ENV{${var}})
+            message("ENV: ${var} = $ENV{${var}}")
+        else()
+            message("${var} = ${${var}}")
+        endif()
+    endforeach()
+endfunction()

@@ -1,0 +1,13 @@
+{
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "cmake.configureOnOpen": true,
+    "cmake.sourceDirectory": "${workspaceFolder}/.",
+    "liveServer.settings.root": "/bin_web",
+    "liveServer.settings.ignoreFiles": [
+        ".vscode/**",
+        "source/**/*",
+        "build/**/*",
+        "build_web/**/*",
+        "cmake/**/*"
+    ]
+}

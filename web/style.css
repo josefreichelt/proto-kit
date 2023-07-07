@@ -1,0 +1,148 @@
+:root {
+    --fontsBase: BlinkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: var(--fontsBase);
+    font-size: 1.6em;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(20, 20, 20);
+}
+
+#canvas {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    border: 0px none;
+    display: block;
+    background-color: rgb(20, 20, 20);
+}
+
+#controls {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 1;
+}
+
+#fullscreen-button {
+    background: none;
+    border-radius: 0.3rem;
+    padding: 0.1rem 0.3rem;
+    border-color: rgba(46, 63, 92, 0.1);
+    color: rgba(46, 63, 92, 0.1);
+    border-width: 0.1rem;
+    transition-property: color, border-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+#fullscreen-button:hover {
+    border-color: rgba(46, 63, 92, 0.9);
+    color: rgba(46, 63, 92, 0.9);
+}
+
+#download-progress {
+    position: absolute;
+    top: calc(50% - 5rem);
+    width: 100%;
+    height: 10rem;
+    background-color: rgb(100, 100, 100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.progress-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spinner {
+    height: 3rem;
+    width: 3rem;
+    margin: 0;
+    display: inline-block;
+
+    -webkit-animation: rotation 0.8s linear infinite;
+    -moz-animation: rotation 0.8s linear infinite;
+    -o-animation: rotation 0.8s linear infinite;
+    animation: rotation 0.8s linear infinite;
+
+    border-left: 5px solid rgb(235, 235, 235);
+    border-right: 5px solid rgb(235, 235, 235);
+    border-bottom: 5px solid rgb(235, 235, 235);
+    border-top: 5px solid rgb(150, 150, 150);
+
+    border-radius: 100%;
+    background-color: transparent;
+}
+
+#status {
+    font-weight: bold;
+    color: rgb(250, 250, 250);
+}
+
+#progress[value] {
+    height: 1rem;
+    width: 30rem;
+    accent-color: rgb(200, 200, 200);
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes rotation {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes rotation {
+    from {
+        -o-transform: rotate(0deg);
+    }
+
+    to {
+        -o-transform: rotate(360deg);
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
